@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-catalog" />
         <module name="api-movie" />
-        <module name="eureka-server" />
+        <module name="eurekaServer" />
         <module name="configServer" />
         <module name="gateway" />
       </profile>
@@ -17,7 +17,7 @@
       <module name="api-catalog" target="17" />
       <module name="api-movie" target="17" />
       <module name="configServer" target="17" />
-      <module name="eureka-server" target="17" />
+      <module name="eurekaServer" target="17" />
       <module name="gateway" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -26,7 +26,7 @@
       <module name="api-catalog" options="-parameters" />
       <module name="api-movie" options="-parameters" />
       <module name="configServer" options="-parameters" />
-      <module name="eureka-server" options="-parameters" />
+      <module name="eurekaServer" options="-parameters" />
       <module name="gateway" options="-parameters" />
     </option>
   </component>
