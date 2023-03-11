@@ -1,12 +1,13 @@
 package com.dh.apicatalog.controller;
 
-import com.dh.apicatalog.client.MovieDto;
+import com.dh.apicatalog.client.MovieDTO;
 import com.dh.apicatalog.client.MovieServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,9 @@ public class CatalogController {
 
 
     @GetMapping("/{genre}")
-    public ResponseEntity<List<MovieDto>> getGenre(@PathVariable String genre) {
-        return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
+    public ResponseEntity<List<MovieDTO>> getGenre(@PathVariable String genre, HttpServletResponse response) {
+        ResponseEntity<List<MovieDTO>> moviesResponse = ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
+        System.out.println("LOAD BALANCER SELECTED PORT: " + moviesResponse.getHeaders().get("port"));
+        return moviesResponse;
     }
 }

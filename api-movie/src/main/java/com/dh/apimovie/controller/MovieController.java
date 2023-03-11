@@ -3,9 +3,11 @@ package com.dh.apimovie.controller;
 import com.dh.apimovie.model.Movie;
 import com.dh.apimovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -15,8 +17,13 @@ public class MovieController {
     @Autowired
     public MovieService movieService;
 
+    @Value("${server.port}")
+    private String puerto;
+
     @GetMapping("/{genre}")
-    public ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre){
+    public ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre, HttpServletResponse response){
+        response.addHeader("port", puerto);
+        System.out.println(puerto);
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
 

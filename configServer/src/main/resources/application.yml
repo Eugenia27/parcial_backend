@@ -9,6 +9,4 @@ spring:
       server:
         git:
           uri: https://github.com/Eugenia27/ConfigDataParcial
-#          default-label: master
           force-pull: true
-#          search-paths:
