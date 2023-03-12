@@ -4,6 +4,7 @@ import com.dh.apimovie.model.Movie;
 import com.dh.apimovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,12 @@ public class MovieController {
     public MovieService movieService;
 
     @Value("${server.port}")
-    private String puerto;
+    private String port;
 
     @GetMapping("/{genre}")
     public ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre, HttpServletResponse response){
-        response.addHeader("port", puerto);
-        System.out.println(puerto);
+        response.addHeader("port", port);
+        System.out.println("LOAD BALANCER SELECTED INSTANCE. PORT: " + port);
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
 

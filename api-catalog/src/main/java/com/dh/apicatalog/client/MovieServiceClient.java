@@ -1,6 +1,8 @@
 package com.dh.apicatalog.client;
 
 import com.dh.apicatalog.config.LoadBalancerConfiguration;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +18,14 @@ public interface MovieServiceClient {
     @GetMapping("/api/v1/movies/{genre}")
     public List<MovieDTO> getMovieByGenre(@PathVariable String genre);
 
-//    @Getter
-//    @Setter
-//    class MovieDto {
-//        private Long id;
-//
-//        private String name;
-//
-//        private String genre;
-//
-//        private String urlStream;
-//    }
+    @Getter
+    @Setter
+    class MovieDTO {
+        private Long id;
+        private String name;
+        private String genre;
+        private String urlStream;
+    }
 
 
 }
