@@ -1,5 +1,7 @@
 package com.dh.apicatalog.service;
 
+import com.dh.apicatalog.model.Movie;
+import com.dh.apicatalog.model.Serie;
 import com.dh.apicatalog.repository.MovieRepository;
 import com.dh.apicatalog.repository.SerieRepository;
 import com.dh.apicatalog.client.MovieServiceClient;
@@ -35,8 +37,8 @@ public class CatalogService {
 
     // Modo offline
     public CatalogDTO getCatalogByGenreOffline(String genre) {
-        List<MovieServiceClient.MovieDTO> moviesResponse = movieServiceClient.getMovieByGenre(genre);
-        List<SerieServiceClient.SerieDTO> seriesResponse = serieServiceClient.getSerieByGenre(genre);
+        List<Movie> moviesResponse = movieRepository.findByGenre(genre);
+        List<Serie> seriesResponse = serieRepository(genre);
         CatalogDTO catalog = new CatalogDTO();
         catalog.setGenre(genre);
         catalog.setMovies(moviesResponse);

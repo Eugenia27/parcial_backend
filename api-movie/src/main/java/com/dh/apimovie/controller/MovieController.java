@@ -1,5 +1,6 @@
 package com.dh.apimovie.controller;
 
+import com.dh.apimovie.event.NewMovieEventProducer;
 import com.dh.apimovie.model.Movie;
 import com.dh.apimovie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
